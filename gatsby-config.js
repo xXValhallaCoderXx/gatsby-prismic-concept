@@ -23,13 +23,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-prismic-preview',
       options: {
-        repositoryName: 'gatsby-source-prismic-test-site',
-        linkResolver(doc){
+        repositoryName: "gatsby-prismic-concept",
+        linkResolver(doc) {
           if (doc.type === "page") {
-            return `/${doc.uid}`
+            return `/${doc.uid}`;
           }
           // Backup for all other types
-          return "/"
+          return "/";
         },
         path: '/preview',
       }
