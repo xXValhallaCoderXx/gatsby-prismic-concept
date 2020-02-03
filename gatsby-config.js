@@ -1,3 +1,5 @@
+const {linkResolver} = require("./prismic-configuration");
+
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -18,6 +20,14 @@ module.exports = {
         previews: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-prismic-preview',
+      options: {
+        repositoryName: 'gatsby-source-prismic-test-site',
+        linkResolver,
+        path: '/preview',
+      }
+    }
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
