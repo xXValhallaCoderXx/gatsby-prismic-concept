@@ -1,4 +1,4 @@
-const prismicConfig = require("./prismic-configuration");
+// const prismicConfig = require("./prismic-configuration");
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -24,7 +24,13 @@ module.exports = {
       resolve: 'gatsby-plugin-prismic-preview',
       options: {
         repositoryName: 'gatsby-source-prismic-test-site',
-        linkResolver: doc => prismicConfig.linkResolver(doc),
+        linkResolver(doc){
+          if (doc.type === "page") {
+            return `/${doc.uid}`
+          }
+          // Backup for all other types
+          return "/"
+        },
         path: '/preview',
       }
     }
