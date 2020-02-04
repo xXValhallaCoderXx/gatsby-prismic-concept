@@ -14,21 +14,6 @@ export const dynamicPageQuery = graphql`
         title {
           text
         }
-        body {
-          slice_type
-          primary {
-            background_color
-            quote {
-              text
-            }
-            name_of_the_author {
-              text
-            }
-            portrait_author {
-              url
-            }
-          }
-        }
       }
     }
   }
