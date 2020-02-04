@@ -24,16 +24,10 @@ module.exports = {
       resolve: 'gatsby-plugin-prismic-preview',
       options: {
         repositoryName: "gatsby-prismic-concept",
-        linkResolver(doc) {
-          if (doc.type === "page") {
-            return `/${doc.uid}`;
-          }
-          // Backup for all other types
-          return "/";
-        },
+        linkResolver: require('./prismic-link-resolver'),
         path: '/preview',
       }
-    }
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
