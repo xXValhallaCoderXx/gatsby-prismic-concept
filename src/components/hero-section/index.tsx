@@ -1,7 +1,10 @@
 import React from "react"
-import PropTypes from "prop-types"
 
-const HeroSection = ({title}) => {
+interface Props {
+  title: string;
+}
+
+const HeroSection = (props: Props) => {
   return (
     <div
       style={{
@@ -12,16 +15,9 @@ const HeroSection = ({title}) => {
         backgroundColor: "black"
       }}
     >
-      <h1 style={{color: "red"}}>{title}</h1>
+      <h1 style={{color: "red"}}>{props.title}</h1>
     </div>
   )
-}
-
-HeroSection.propTypes = {
-  /**
-     onClick function
-  **/
-  title: PropTypes.string,
 }
 
 export default HeroSection

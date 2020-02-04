@@ -15,6 +15,7 @@
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-sass": "^2.1.28",
     "gatsby-plugin-sharp": "^2.4.3",
+    "gatsby-plugin-typescript": "^2.1.27",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
     "gatsby-transformer-sharp": "^2.3.13",
@@ -31,9 +32,18 @@
     "@storybook/addon-knobs": "^5.3.10",
     "@storybook/addon-links": "^5.3.10",
     "@storybook/addons": "^5.3.10",
+    "@storybook/preset-typescript": "^1.2.0",
     "@storybook/react": "^5.3.10",
+    "@types/node": "^13.7.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
     "babel-loader": "^8.0.6",
-    "prettier": "^1.19.1"
+    "babel-preset-react-app": "^9.1.1",
+    "fork-ts-checker-webpack-plugin": "^4.0.3",
+    "prettier": "^1.19.1",
+    "react-docgen-typescript-loader": "^3.6.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5"
   },
   "keywords": [
     "gatsby"
