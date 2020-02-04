@@ -1,6 +1,6 @@
 import React from "react"
 import { action } from "@storybook/addon-actions"
-import Button from "../src/components/button"
+import {Button} from "../src/components"
 
 export default {
   title: "Button",
@@ -19,6 +19,6 @@ export default {
   },
 }
 
-export const Text = () => (
+export const Default = () => (
   <Button onClick={action("clicked")}>Hello Button</Button>
 )
