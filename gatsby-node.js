@@ -30,8 +30,9 @@ exports.createPages = async({reporter,actions,graphql}) => {
 
   results.data.dynamicPages.edges.forEach(({node}) => {
     // Create Dynamic Page
+    console.log("NOOOOODE: ", node);
     createPage({
-      path: `/${node.slugs}`,
+      path: `/${node.slugs[0]}`,
       component: dynamicPageTemplate,
       context: {
         id: node.id

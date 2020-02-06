@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@loadable/component": "^5.12.0",
     "@storybook/addon-info": "^5.3.10",
     "dotenv": "^8.2.0",
     "gatsby": "^2.19.7",
@@ -19,6 +20,7 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
     "gatsby-transformer-sharp": "^2.3.13",
+    "lodash": "^4.17.15",
     "node-sass": "^4.13.1",
     "prismic-reactjs": "^1.2.0",
     "prop-types": "^15.7.2",
