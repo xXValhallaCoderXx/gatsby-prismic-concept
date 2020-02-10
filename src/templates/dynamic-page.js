@@ -5,13 +5,14 @@ import Loadable from "@loadable/component"
 import Layout from "../components/layout"
 
 const DynamicPageTemplate = props => {
-  const { data } = props.data.prismicPage
-  console.log("LALAL: ", data)
+  const data = props.data.prismic.allPages.edges[0];
+  const components = data.node.body;
   return (
     <Layout>
-      {data.body &&
-        data.body.map((item, index) => {
-          const Module = Loadable(() => import(`../slices/${item.slice_type}`))
+      {data.node.title[0].text}
+      {components &&
+        components.map((item, index) => {
+          const Module = Loadable(() => import(`../slices/${item.type}`))
           return <Module key={item.id} data={item.primary} />
         })}
     </Layout>
@@ -20,68 +21,31 @@ const DynamicPageTemplate = props => {
 
 export const dynamicPageQuery = graphql`
   query($id: String!) {
-    prismicPage(id: { eq: $id }) {
-      slugs
-      data {
-        title {
-          text
-        }
-        body {
-          ... on PrismicPageBodyBannerWithCaption {
-            id
-            slice_type
-            primary {
-              title_of_banner {
-                text
-              }
-              image_banner {
-                url
-              }
-              description {
-                text
-              }
-              button_link {
-                url
-              }
-              button_label {
-                text
+    prismic {
+    allPages(id: $id) {
+      edges {
+        node {
+          title
+          body {
+            ... on PRISMIC_PageBodyHero_section {
+              type
+              label
+              primary {
+                hero_title
               }
             }
-          }
-          ... on PrismicPageBodyHeroSection {
-            id
-            slice_type
-            primary {
-              hero_title {
-                text
+            ... on PRISMIC_PageBodyContact_form {
+              type
+              label
+              primary {
+                hubspot_id
               }
-            }
-          }
-          ... on PrismicPageBodyQuote {
-            id
-            slice_type
-            primary {
-              quote {
-                text
-              }
-              portrait_author {
-                url
-              }
-              name_of_the_author {
-                text
-              }
-            }
-          }
-          ... on PrismicPageBodyContactForm {
-            id
-            slice_type
-            primary {
-              hubspot_id
             }
           }
         }
       }
     }
+  }
   }
 `
 

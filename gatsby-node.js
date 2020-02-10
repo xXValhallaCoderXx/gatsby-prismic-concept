@@ -6,18 +6,23 @@
 
 // You can delete this file if you're not using it
 const path = require("path");
+const lodash = require("lodash");
 
-exports.createPages = async({reporter,actions,graphql}) => {
-  const {createPage} = actions;
-  const dynamicPageTemplate = path.resolve("./src/templates/dynamic-page.js");
+exports.createPages = async ({ reporter, actions, graphql }) => {
+  const { createPage } = actions
+  const dynamicPageTemplate = path.resolve("./src/templates/dynamic-page.js")
 
   const results = await graphql(`
     {
-      dynamicPages: allPrismicPage {
-        edges {
-          node {
-            id
-            slugs
+      dynamicPages: prismic {
+        allPages {
+          edges {
+            node {
+              title
+              _meta {
+                id
+              }
+            }
           }
         }
       }
@@ -27,15 +32,13 @@ exports.createPages = async({reporter,actions,graphql}) => {
   if (results.errors) {
     reporter.panic(result.errors);
   }
-
-  results.data.dynamicPages.edges.forEach(({node}) => {
+  results.data.dynamicPages.allPages.edges.forEach(({node}) => {
     // Create Dynamic Page
-    console.log("NOOOOODE: ", node);
     createPage({
-      path: `/${node.slugs[0]}`,
+      path: `/${lodash.snakeCase(node.title[0].text)}`,
       component: dynamicPageTemplate,
       context: {
-        id: node.id
+        id: node._meta.id
       }
     })
   })

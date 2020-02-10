@@ -3,15 +3,10 @@ import Navigation from "./navigation";
 import "./layout.css"
 
 const Layout = ({ children }) => {
-
-
   return (
     <div>
-     
-        <Navigation />
-        <main>{children}</main>
-    
-    
+      <Navigation />
+      <main>{children}</main>
     </div>
   )
 }

@@ -1,12 +1,12 @@
 import React from "react"
-
-import {Button} from "../components";
+import Layout from "../components/layout"
+import { Button } from "../components"
 
 const IndexPage = () => (
-  <>
-      Hello
-      <Button onClick={() => console.log("Hello")}>Hello</Button>
-  </>
+  <Layout>
+    Hello
+    <Button onClick={() => console.log("Hello")}>Hello</Button>
+  </Layout>
 )
 
 export default IndexPage

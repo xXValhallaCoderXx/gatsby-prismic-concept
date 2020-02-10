@@ -12,20 +12,23 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-prismic`,
+      resolve: `gatsby-source-prismic-graphql`,
       options: {
         repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
-        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        path: "/preview",
-        previews: true,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-prismic-preview',
-      options: {
-        repositoryName: "gatsby-prismic-concept",
-        linkResolver: require('./prismic-link-resolver'),
         path: '/preview',
+        previews: true,
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN
+        // pages: [{
+        //   type: 'Product',
+        //   match: '/products/:uid',
+        //   path: '/product',
+        //   component: require.resolve('./src/templates/product.js')
+        // },{
+        //   type: 'Blog_post',
+        //   match: '/blog/:uid',
+        //   path: '/blogpost',
+        //   component: require.resolve('./src/templates/blogPost.js')
+        // }]
       }
     },
     `gatsby-plugin-sass`,
